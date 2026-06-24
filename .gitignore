@@ -1,0 +1,9 @@
+   # Node.js
+   node_modules/
+   package-lock.json   # optional: keep the lock file if you want reproducible installs
+
+   # OS / editor junk
+   npm-debug.log*
+   .DS_Store
+   .vscode/
+   .idea/
