@@ -9,11 +9,11 @@ public class RealImage implements Image {
     }
 
     private void loadFromDisk() {
-        // TODO: Simulate heavy loading operation
+        System.out.println("Loading image from disk: " + filename);
     }
 
     @Override
     public void display() {
-        // TODO: Display image logic
+        System.out.println("Displaying " + filename);
     }
 }

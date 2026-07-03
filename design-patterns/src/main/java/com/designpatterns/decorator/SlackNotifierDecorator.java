@@ -8,6 +8,6 @@ public class SlackNotifierDecorator extends NotifierDecorator {
     @Override
     public void send(String message) {
         super.send(message);
-        // TODO: Add Slack notification logic
+        System.out.println("Sending Slack Notification: " + message);
     }
 }

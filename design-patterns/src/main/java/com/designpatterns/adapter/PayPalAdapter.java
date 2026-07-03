@@ -1,9 +1,16 @@
 package com.designpatterns.adapter;
 
 public class PayPalAdapter implements PaymentProcessor {
-    // TODO: Implement Adapter pattern (compose with LegacyPayPalGateway)
+    private LegacyPayPalGateway gateway;
+    private String username;
+
+    public PayPalAdapter(LegacyPayPalGateway gateway, String username) {
+        this.gateway = gateway;
+        this.username = username;
+    }
+
     @Override
     public void processPayment(double amount) {
-        // TODO: Map to legacy gateway makePayment
+        gateway.makePayment(username, amount);
     }
 }

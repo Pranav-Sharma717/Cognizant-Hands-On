@@ -1,5 +1,17 @@
 package com.designpatterns.command;
 
 public class RemoteControl {
-    // TODO: Implement RemoteControl invoker
+    private Command command;
+
+    public void setCommand(Command command) {
+        this.command = command;
+    }
+
+    public void pressButton() {
+        if (command != null) {
+            command.execute();
+        } else {
+            System.out.println("No command set on the remote.");
+        }
+    }
 }

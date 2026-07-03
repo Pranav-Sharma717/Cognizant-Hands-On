@@ -1,9 +1,18 @@
 package com.designpatterns.proxy;
 
 public class ProxyImage implements Image {
-    // TODO: Implement Proxy pattern (lazy load RealImage)
+    private String filename;
+    private RealImage realImage;
+
+    public ProxyImage(String filename) {
+        this.filename = filename;
+    }
+
     @Override
     public void display() {
-        // TODO: Delegate to RealImage display
+        if (realImage == null) {
+            realImage = new RealImage(filename);
+        }
+        realImage.display();
     }
 }

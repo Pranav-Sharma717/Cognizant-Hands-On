@@ -2,6 +2,6 @@ package com.designpatterns.adapter;
 
 public class LegacyPayPalGateway {
     public void makePayment(String user, double amount) {
-        // TODO: Legacy payment method
+        System.out.println("Legacy PayPal processing payment for user '" + user + "' of $" + amount);
     }
 }

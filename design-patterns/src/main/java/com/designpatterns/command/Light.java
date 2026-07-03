@@ -2,10 +2,9 @@ package com.designpatterns.command;
 
 public class Light {
     public void turnOn() {
-        // TODO: Turn on light logic
+        System.out.println("The light is ON.");
     }
-
     public void turnOff() {
-        // TODO: Turn off light logic
+        System.out.println("The light is OFF.");
     }
 }

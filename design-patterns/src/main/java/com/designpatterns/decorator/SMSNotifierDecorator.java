@@ -8,6 +8,6 @@ public class SMSNotifierDecorator extends NotifierDecorator {
     @Override
     public void send(String message) {
         super.send(message);
-        // TODO: Add SMS notification logic
+        System.out.println("Sending SMS: " + message);
     }
 }

@@ -2,7 +2,12 @@ package com.designpatterns.factorymethod;
 
 public class Main {
     public static void main(String[] args) {
-        // TODO: Test your Factory Method implementation
-        System.out.println("Testing Factory Method Pattern...");
+        DocumentFactory pdfFactory = new PdfDocumentFactory();
+        Document pdfDoc = pdfFactory.createDocument();
+        pdfDoc.open();
+
+        DocumentFactory wordFactory = new WordDocumentFactory();
+        Document wordDoc = wordFactory.createDocument();
+        wordDoc.open();
     }
 }

@@ -1,8 +1,14 @@
 package com.designpatterns.command;
 
 public class LightOnCommand implements Command {
-    // TODO: Implement concrete command
+    private Light light;
+
+    public LightOnCommand(Light light) {
+        this.light = light;
+    }
+
     @Override
     public void execute() {
+        light.turnOn();
     }
 }
