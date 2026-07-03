@@ -1,4 +1,4 @@
-
+# React
 ---
 
 ## 1. Define SPA (Single‑Page Application) & its benefits  
@@ -113,6 +113,7 @@ Result: *faster updates* and *less janky UI*.
 
 
 ---
+# week 1
 
 # 🎨 Software Design Patterns & Principles
 

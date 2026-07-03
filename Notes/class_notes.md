@@ -351,4 +351,594 @@ Client → DispatcherServlet → @RestController → Service (@Transactional) �
 ```
 
 ---
+# Week 3
+# Spring Boot & REST API Notes
+
+## 1. Spring Core - IoC (Inversion of Control)
+
+**IoC (Inversion of Control)** is the fundamental principle of the Spring Framework.
+
+Instead of you creating objects manually using `new`, Spring creates and manages them for you.
+
+### Without Spring
+
+```java
+StudentService service = new StudentService();
+```
+
+### With Spring
+
+```java
+@Service
+public class StudentService {
+}
+```
+
+Spring automatically creates the object and injects it wherever required.
+
+### Benefits
+
+* Loose coupling
+* Easy testing
+* Better maintainability
+* Dependency Injection (DI)
+
+---
+
+## 2. Spring Boot
+
+Spring Boot is an extension of Spring that simplifies application development.
+
+Instead of configuring everything manually, Spring Boot provides:
+
+* Auto Configuration
+* Embedded Tomcat Server
+* Dependency Management
+* Starter Projects
+
+This allows developers to focus only on writing business logic.
+
+### Features
+
+* Embedded Tomcat
+* Auto Configuration
+* Spring Starters
+* Production Ready
+* Minimal Configuration
+
+---
+
+## 3. API (Application Programming Interface)
+
+An API is a medium through which two applications communicate.
+
+Example:
+
+```
+Mobile App
+      ↓
+REST API
+      ↓
+Database
+```
+
+The mobile app sends requests to the API, and the API processes the request and returns a response.
+
+---
+
+## 4. Client-Server Architecture
+
+### Client
+
+The application requesting data.
+
+Examples:
+
+* Browser
+* Mobile App
+* Postman
+
+### Server
+
+Processes requests and returns responses.
+
+Example:
+
+Spring Boot Application
+
+```
+Client  ----HTTP Request---->  Server
+Client  <---HTTP Response---- Server
+```
+
+---
+
+## 5. HTTP (HyperText Transfer Protocol)
+
+HTTP is the communication protocol between the client and server.
+
+Example
+
+```
+Browser
+    ↓
+HTTP Request
+    ↓
+Spring Boot Server
+    ↓
+HTTP Response
+```
+
+Common HTTP Methods
+
+| Method | Purpose                |
+| ------ | ---------------------- |
+| GET    | Read Data              |
+| POST   | Create Data            |
+| PUT    | Update Entire Resource |
+| PATCH  | Partial Update         |
+| DELETE | Delete Data            |
+
+---
+
+## 6. Data Transfer (JSON)
+
+Most REST APIs communicate using JSON (JavaScript Object Notation).
+
+Example Request
+
+```json
+{
+    "id":1,
+    "name":"John",
+    "age":22
+}
+```
+
+Example Response
+
+```json
+{
+    "message":"Student Created Successfully"
+}
+```
+
+Why JSON?
+
+* Lightweight
+* Human-readable
+* Easy to parse
+* Language independent
+
+---
+
+# 7. REST API
+
+REST stands for
+
+> Representational State Transfer
+
+REST is an architectural style for designing web services.
+
+Everything in REST is treated as a **Resource**.
+
+Example Resource
+
+```
+Student
+Employee
+Book
+Customer
+```
+
+Resource URL
+
+```
+/students
+/books
+/employees
+```
+
+## REST Operations
+
+### GET
+
+Retrieve data.
+
+```
+GET /students
+```
+
+Returns all students.
+
+---
+
+### POST
+
+Create a new resource.
+
+```
+POST /students
+```
+
+Body
+
+```json
+{
+"name":"Rahul"
+}
+```
+
+---
+
+### PUT
+
+Update an existing resource.
+
+```
+PUT /students/1
+```
+
+---
+
+### DELETE
+
+Delete a resource.
+
+```
+DELETE /students/1
+```
+
+---
+
+## REST Principles
+
+* Stateless
+* Client-Server
+* Cacheable
+* Uniform Interface
+
+---
+
+# 8. Spring Boot Layers
+
+A typical Spring Boot application follows a layered architecture.
+
+```
+Controller
+      ↓
+Service
+      ↓
+Repository
+      ↓
+Database
+```
+
+---
+
+## Controller
+
+Receives HTTP requests.
+
+```java
+@RestController
+@RequestMapping("/students")
+public class StudentController {
+
+}
+```
+
+Responsibilities
+
+* Accept requests
+* Validate input
+* Call Service
+* Return Response
+
+---
+
+## Service
+
+Contains business logic.
+
+```java
+@Service
+public class StudentService {
+
+}
+```
+
+Responsibilities
+
+* Business calculations
+* Validation
+* Calling Repository
+
+---
+
+## Repository
+
+Communicates with the database.
+
+```java
+@Repository
+public interface StudentRepository extends JpaRepository<Student,Integer>{
+
+}
+```
+
+Responsibilities
+
+* Save Data
+* Fetch Data
+* Delete Data
+* Update Data
+
+---
+
+## Entity
+
+Represents a database table.
+
+```java
+@Entity
+public class Student {
+
+    @Id
+    private Integer id;
+
+    private String name;
+}
+```
+
+Each Entity corresponds to one table.
+
+---
+
+# 9. HTTP Error Status Codes
+
+| Status Code | Meaning                     |
+| ----------- | --------------------------- |
+| 400         | Bad Request                 |
+| 401         | Unauthorized                |
+| 403         | Forbidden *(commonly used)* |
+| 404         | Resource Not Found          |
+| 500         | Internal Server Error       |
+
+### 400 Bad Request
+
+The request sent by the client is invalid.
+
+Example
+
+Missing required field.
+
+---
+
+### 401 Unauthorized
+
+Authentication is required.
+
+Example
+
+Invalid login token.
+
+---
+
+### 404 Not Found
+
+The requested resource does not exist.
+
+Example
+
+```
+GET /students/100
+```
+
+Student 100 is not available.
+
+---
+
+### 500 Internal Server Error
+
+Unexpected error occurred on the server.
+
+Example
+
+Database connection failure.
+
+---
+
+# 10. Success Status Codes
+
+| Status Code | Meaning |
+| ----------- | ------- |
+| 200         | OK      |
+| 201         | Created |
+
+### 200 OK
+
+Request completed successfully.
+
+Example
+
+```
+GET /students
+```
+
+---
+
+### 201 Created
+
+Resource created successfully.
+
+Example
+
+```
+POST /students
+```
+
+---
+
+# 11. Exception Handling
+
+Exception handling allows you to return meaningful error messages instead of application crashes.
+
+Example
+
+```java
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> handle(Exception ex){
+
+        return ResponseEntity
+                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(ex.getMessage());
+    }
+}
+```
+
+Benefits
+
+* Cleaner code
+* Centralized error handling
+* Better API responses
+
+---
+
+# Tools Required
+
+## 1. Postman
+
+Used to test REST APIs.
+
+You can:
+
+* Send GET requests
+* Send POST requests
+* Test PUT requests
+* Test DELETE requests
+
+---
+
+## 2. MySQL Workbench
+
+GUI tool for MySQL.
+
+Used to:
+
+* Create databases
+* Create tables
+* Execute SQL queries
+* View stored data
+
+---
+
+## 3. Apache Maven
+
+A build and dependency management tool.
+
+Responsibilities
+
+* Downloads required libraries
+* Builds the project
+* Runs tests
+* Packages the application
+
+Dependencies are defined in:
+
+```text
+pom.xml
+```
+
+---
+
+# Creating a Spring Boot Project
+
+## Step 1: Visit Spring Initializr
+
+Go to:
+
+> [https://start.spring.io](https://start.spring.io)
+
+Select:
+
+* Project → Maven
+* Language → Java
+* Spring Boot Version
+* Group
+* Artifact
+* Package Name
+
+Add required dependencies such as:
+
+* Spring Web
+* Spring Data JPA
+* MySQL Driver
+* Lombok (optional)
+
+Click **Generate**.
+
+A downloadable ZIP project will be created.
+
+---
+
+## Step 2: Import the Project
+
+Open IntelliJ IDEA or Eclipse.
+
+Import the generated Maven project.
+
+Maven automatically downloads all required dependencies.
+
+---
+
+## Step 3: Create Project Structure
+
+Create the following packages:
+
+```
+controller
+service
+repository
+entity
+```
+
+(Optional but recommended)
+
+```
+dto
+exception
+config
+util
+```
+
+---
+
+## Step 4: Install Postman
+
+Use Postman to test your REST endpoints.
+
+Example:
+
+```
+GET http://localhost:8080/students
+```
+
+---
+
+## Step 5: Build Your First REST API
+
+Implement CRUD operations for a single resource (e.g., `Student`).
+
+| HTTP Method | Endpoint         | Description          |
+| ----------- | ---------------- | -------------------- |
+| GET         | `/students`      | Get all students     |
+| GET         | `/students/{id}` | Get a student by ID  |
+| POST        | `/students`      | Create a new student |
+| PUT         | `/students/{id}` | Update a student     |
+| DELETE      | `/students/{id}` | Delete a student     |
+
 
