@@ -31,8 +31,8 @@ Welcome to my repository for the **Cognizant Digital Nurture 5.0 - Java Full Sta
 | Spring Core & Maven | ✅ Completed |
 | Spring Data JPA & Hibernate | ✅ Completed |
 | Spring REST | ✅ Completed |
-| Microservices | ⏳ Upcoming |
-| React JS | ⏳ Upcoming |
+| Microservices | ✅ Completed |
+| React JS | ✅ Completed |
 | Git | ⏳ Upcoming |
 | DevOps & Cloud | ⏳ Upcoming |
 
