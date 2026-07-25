@@ -1,5 +1,5 @@
 git --version
-git config --global user.name "Shaik Mohammad Sajjad"
+git config --global user.name "G V Pranav Sharma"
 git config --global user.email "your-email@example.com"
 git config --global --list
 notepad++
@@ -18,7 +18,7 @@ git status
 git add welcome.txt
 git commit
 git status
-git remote add origin https://github.com/SajjadShaik2005/Cognizant-Deep-Skilling-Round.git
+git remote add origin https://github.com/Pranav-Sharma717/Cognizant-Hands-On.git
 git pull origin main
 git push -u origin main
 touch application.log
