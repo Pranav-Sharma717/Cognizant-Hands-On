@@ -1,0 +1,74 @@
+git --version
+git config --global user.name "Shaik Mohammad Sajjad"
+git config --global user.email "your-email@example.com"
+git config --global --list
+notepad++
+alias notepad='notepad++'
+notepad
+git config --global core.editor "notepad++ -multiInst -notabbar -nosession -noPlugin"
+git config --global -e
+mkdir GitDemo
+cd GitDemo
+git init
+ls -la
+echo "Welcome to Git" > welcome.txt
+ls
+cat welcome.txt
+git status
+git add welcome.txt
+git commit
+git status
+git remote add origin https://github.com/SajjadShaik2005/Cognizant-Deep-Skilling-Round.git
+git pull origin main
+git push -u origin main
+touch application.log
+mkdir logs
+touch logs/server.log
+printf "*.log\nlogs/\n" > .gitignore
+git status
+git add .gitignore
+git commit -m "Add gitignore rules"
+git status
+git branch GitNewBranch
+git branch -a
+git switch GitNewBranch
+echo "Changes from GitNewBranch" > branch.txt
+git add branch.txt
+git commit -m "Add branch changes"
+git status
+git switch main
+git diff main GitNewBranch
+p4merge main GitNewBranch
+git merge GitNewBranch
+git log --oneline --graph --decorate
+git branch -d GitNewBranch
+git status
+git status
+git switch -c GitWork
+echo "<message>Branch version</message>" > hello.xml
+git add hello.xml
+git commit -m "Add hello.xml in GitWork"
+echo "<message>Updated branch version</message>" > hello.xml
+git add hello.xml
+git commit -m "Update hello.xml in GitWork"
+git switch main
+echo "<message>Main version</message>" > hello.xml
+git add hello.xml
+git commit -m "Add hello.xml in main"
+git log --oneline --graph --decorate --all
+git diff main GitWork
+p4merge main GitWork
+git merge GitWork
+git status
+git add hello.xml
+git commit -m "Resolve hello.xml merge conflict"
+printf "*.bak\n" >> .gitignore
+git add .gitignore
+git commit -m "Ignore backup files"
+git branch -a
+git branch -d GitWork
+git log --oneline --graph --decorate
+git status
+git branch -a
+git pull origin main
+git push origin main
