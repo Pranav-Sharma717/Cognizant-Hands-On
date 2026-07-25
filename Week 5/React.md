@@ -135,7 +135,7 @@ import "./Stylesheets/mystyle.css";
 function App() {
   return (
     <CalculateScore
-      name="Sajjad"
+      name="Pranav"
       school="Cognizant Academy"
       total={450}
       goal={5}
