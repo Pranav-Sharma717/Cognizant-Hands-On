@@ -34,7 +34,7 @@ Welcome to my repository for the **Cognizant Digital Nurture 5.0 - Java Full Sta
 | Microservices | ✅ Completed |
 | React JS | ✅ Completed |
 | Git | ✅ Completed |
-| DevOps & Cloud | ⏳ Upcoming |
+| DevOps & Cloud | ✅ Upcoming |
 
 ## 🛠️ Technologies Used
 
